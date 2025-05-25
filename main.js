@@ -307,7 +307,7 @@ $(document).ready(function() {
                     'Distributed GPU training infrastructure for efficient model scaling',
                     'Fine-tuning pipeline for client-specific financial applications'
                 ],
-                technologies: 'PyTorch, DeepSpeed, Hugging Face Transformers, Accelerate, NVIDIA H100 GPUs, LangChain, AutoGen, RoPE, MLFlow, MoE',
+                technologies: 'PyTorch, DeepSpeed, Accelerate, NVIDIA H100 GPUs, MLHA, LangChain, AutoGen, RoPE, MLFlow, MoE',
                 outcome: 'The model is currently in development with initial benchmarks showing 40% improvement in financial reasoning tasks compared to general-purpose LLMs of similar size. Target completion is set for Q2 2026.'
             },
             {
@@ -323,7 +323,7 @@ $(document).ready(function() {
                     'Custom tokenization for mathematical symbols and expressions',
                     'Web interface for easy conversion and testing'
                 ],
-                technologies: 'DeepSeek Aimo 2, PyTorch, NVIDIA H-100, NumPy, SciPy, SymPy, FastAPI',
+                technologies: 'DeepSeek Aimo 2, PyTorch, NVIDIA H-100, DeepSpeed, Pytorch, PEFT, SciPy, SymPy, FaskAPI, MlFlow',
                 outcome: '95% accuracy on complex mathematical expressions, reducing development time for computational algorithms by 60%. Successfully deployed at Interstellus Research for use by mathematicians and researchers.'
             },
             {
@@ -339,13 +339,13 @@ $(document).ready(function() {
                     'Real-time relevance feedback mechanism',
                     'Custom evaluation framework for response quality assessment'
                 ],
-                technologies: 'LangChain, ChromaDB, Hugging Face Embeddings, LLaMA, FastAPI, Redis',
+                technologies: 'LangChain, SupaBase(Vectorized), Open AI Embeddings, OpenAI API, Node.js, RestAPI, Redis',
                 outcome: 'Achieved 40% reduction in response time while improving answer accuracy by 25% compared to traditional chatbots. The system is now handling over 5,000 daily queries with a 98% satisfaction rate.'
             },
             {
                 id: 'ev-detection',
                 title: 'EV Intrusion Detection System',
-                timeline: 'April 2023 - September 2024',
+                timeline: 'April 2021 - September 2023',
                 client: 'Automotive Security Consortium',
                 description: 'A cybersecurity system for electric vehicles that uses deep learning to detect intrusions and anomalies in vehicle communications networks. The system monitors CAN bus and other in-vehicle networks to identify malicious activities in real-time.',
                 features: [
@@ -371,7 +371,7 @@ $(document).ready(function() {
                     'Memory system that maintains conversation context across multiple turns',
                     'Deployment-ready API for easy integration with mobile and web applications'
                 ],
-                technologies: 'LLaVA, CLIP, Hugging Face Transformers, PyTorch, FastAPI, Docker',
+                technologies: 'LLaVA, VitBERT, Hugging Face Transformers, PyTorch, FLask, Docker, ONNX',
                 outcome: 'The multimodal chatbot demonstrated a 30% improvement in user satisfaction metrics compared to text-only systems. The research was published as a technical report and the system is being considered for commercial applications in customer service and accessibility tools.'
             },
             {
@@ -387,7 +387,7 @@ $(document).ready(function() {
                     'Automated NFT minting and blockchain deployment process',
                     'Autonomous social media engagement and response system'
                 ],
-                technologies: 'StyleGAN, OpenAI GPT, Twitter API, Ethereum, IPFS, Python, TensorFlow, Web3.js',
+                technologies: 'StyleGAN, OpenAI API, Twitter API, Ethereum, IPFS, Python, TensorFlow, Web3.js',
                 outcome: 'The system successfully generated and marketed over 50,000 NFTs across 5 different collections, achieving 72% engagement rates on promotional posts and a 35% increase in follower growth for the associated accounts. Two collections were notably successful, with 80% of NFTs sold within the first week of launch.'
             },
             {
@@ -403,7 +403,7 @@ $(document).ready(function() {
                     'Content scheduling and posting capability through platform APIs',
                     'Detailed content analysis and suggestion system for existing posts with engagement metrics'
                 ],
-                technologies: 'Microsoft Phi-4, PyTorch, PEFT, LoRA, Hugging Face, Instagram API, Facebook Graph API, TikTok API, Supabase, FastAPI',
+                technologies: 'Microsoft Phi-4, PyTorch, PEFT, LoRA, Hugging Face, Instagram API, Facebook Graph API, TikTok API, ChromaDB, RestAPI',
                 outcome: 'The system has generated content for over 30 clients, resulting in an average 45% increase in engagement rates across platforms. Content created by the AI outperformed human-written posts in A/B testing by 28%. The improvement suggestion feature has helped increase client post performance by an average of 35% when implemented.'
             }
             
