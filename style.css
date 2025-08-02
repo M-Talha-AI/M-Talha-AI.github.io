@@ -315,7 +315,7 @@ header.sticky {
 /* ================= About Section ================= */
 .about-content {
     display: flex;
-    align-items: center;
+    align-items: flex-start !important; /* Force top alignment */
     gap: 5rem;
 }
 
@@ -323,7 +323,9 @@ header.sticky {
     flex: 1;
     position: relative;
     max-width: 400px;
-    margin: 0 auto;
+    margin: 0 !important; /* Remove auto margin */
+    align-self: flex-start;
+    margin-top: 0 !important;
 }
 
 .about-img img {
@@ -335,6 +337,24 @@ header.sticky {
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
     transition: all 0.3s ease;
 }
+
+.about-text {
+    flex: 1;
+    padding-top: 0 !important;
+    margin-top: 0 !important;
+}
+
+.about-text h3 {
+    margin-top: 0 !important;
+    line-height: 1.2;
+    font-size: 2.2rem;
+    margin-bottom: 1.5rem;
+    color: var(--secondary);
+    font-weight: 700;
+    position: relative;
+    display: inline-block;
+}
+
 
 .about-img::before {
     content: '';
@@ -359,18 +379,6 @@ header.sticky {
     left: -15px;
 }
 
-.about-text {
-    flex: 1;
-}
-
-.about-text h3 {
-    font-size: 2.2rem;
-    margin-bottom: 1.5rem;
-    color: var(--secondary);
-    font-weight: 700;
-    position: relative;
-    display: inline-block;
-}
 
 .about-text h3::after {
     content: '';
@@ -1220,6 +1228,13 @@ body.dark-theme .section {
     color: #f8f9fa;
 }
 
+body.dark-theme .matrix-column {
+    color: #00ff41;
+    text-shadow: 0 0 10px #00ff41, 0 0 20px #00ff41, 0 0 30px #00ff41;
+    opacity: 0.9;
+    font-weight: bold;
+}
+
 body.dark-theme .about-text h3,
 body.dark-theme .timeline-content h3,
 body.dark-theme .section-title h2 {
@@ -1363,17 +1378,29 @@ body.dark-theme .contact-form h3::after {
 }
 
 @media (max-width: 992px) {
+    .about-text {
+        text-align: center;
+    }
+    
+    .about-img img {
+        height: 350px;
+    }
+}
+
+@media (max-width: 992px) {
     .hero h1 {
         font-size: 3rem;
     }
     
     .about-content {
         flex-direction: column;
+        align-items: center;
         gap: 3rem;
     }
     
     .about-img {
         max-width: 350px;
+        margin: 0 auto !important;
     }
     
     .about-img img {
@@ -1592,7 +1619,25 @@ body.dark-theme .contact-form h3::after {
     transition: all 0.6s ease;
     z-index: -1;
 }
+@media (max-width: 768px) {
+    .about-img {
+        max-width: 300px;
+    }
+    
+    .about-img img {
+        height: 300px;
+    }
+}
 
+@media (max-width: 576px) {
+    .about-img {
+        max-width: 250px;
+    }
+    
+    .about-img img {
+        height: 250px;
+    }
+}
 #load-more:hover:before {
     left: 100%;
 }
@@ -1697,4 +1742,463 @@ body.dark-theme .contact-form h3::after {
 
 .project-img:hover .project-image {
     transform: scale(1.05);
+}
+/* Programming Vibes Animation Pack - Add to your style.css */
+
+/* ================= MATRIX RAIN EFFECT ================= */
+.matrix-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1; /* Bring forward */
+    overflow: hidden;
+}
+
+.matrix-column {
+    position: absolute;
+    top: -100%;
+    font-family: 'Courier New', monospace;
+    font-size: 16px; /* Slightly larger */
+    color: #00ff41;
+    text-shadow: 0 0 8px #00ff41, 0 0 15px #00ff41; /* Enhanced glow */
+    animation: matrixFall linear infinite;
+    opacity: 0.8; /* More visible */
+    z-index: 1;
+    font-weight: bold; /* Make text bolder */
+}
+
+@keyframes matrixFall {
+    0% {
+        top: -100%;
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        top: 100%;
+        opacity: 0;
+    }
+}
+
+/* ================= BINARY CODE ANIMATION ================= */
+.binary-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    opacity: 0.03;
+    pointer-events: none;
+}
+
+.binary-stream {
+    position: absolute;
+    font-family: 'Courier New', monospace;
+    font-size: 12px;
+    color: var(--primary);
+    animation: binaryFlow 10s linear infinite;
+    white-space: nowrap;
+}
+
+@keyframes binaryFlow {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100vw); }
+}
+
+/* ================= TERMINAL WINDOW EFFECT ================= */
+.terminal-window {
+    background: #1a1a1a;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+    font-family: 'Courier New', monospace;
+    margin: 20px 0;
+}
+
+.terminal-header {
+    background: #333;
+    padding: 10px 15px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.terminal-button {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+
+.terminal-button.close { background: #ff5f57; }
+.terminal-button.minimize { background: #ffbd2e; }
+.terminal-button.maximize { background: #28ca42; }
+
+.terminal-body {
+    padding: 20px;
+    color: #00ff41;
+    background: #000;
+    min-height: 200px;
+    overflow: hidden;
+}
+
+.terminal-line {
+    margin-bottom: 10px;
+    opacity: 0;
+    animation: terminalTyping 0.5s ease-out forwards;
+    animation-delay: var(--delay, 0s);
+}
+
+.terminal-prompt::before {
+    content: '➜ ';
+    color: #61dafb;
+    margin-right: 5px;
+}
+
+.terminal-cursor {
+    display: inline-block;
+    background: #00ff41;
+    width: 8px;
+    height: 16px;
+    animation: terminalBlink 1s step-end infinite;
+    margin-left: 2px;
+}
+
+@keyframes terminalTyping {
+    from {
+        opacity: 0;
+        transform: translateX(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes terminalBlink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+}
+
+/* ================= GLITCH TEXT EFFECTS ================= */
+.glitch-text {
+    position: relative;
+    color: white;
+    font-weight: bold;
+    animation: glitchBase 0.3s ease-in-out infinite alternate;
+}
+
+.glitch-text::before,
+.glitch-text::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.glitch-text::before {
+    animation: glitchRed 0.3s ease-in-out infinite alternate;
+    color: #ff073a;
+    z-index: -1;
+}
+
+.glitch-text::after {
+    animation: glitchBlue 0.3s ease-in-out infinite alternate;
+    color: #00d4ff;
+    z-index: -2;
+}
+
+@keyframes glitchBase {
+    0% { transform: translate(0); }
+    20% { transform: translate(-2px, 2px); }
+    40% { transform: translate(-2px, -2px); }
+    60% { transform: translate(2px, 2px); }
+    80% { transform: translate(2px, -2px); }
+    100% { transform: translate(0); }
+}
+
+@keyframes glitchRed {
+    0% { transform: translate(0); }
+    20% { transform: translate(2px, 2px); }
+    40% { transform: translate(2px, -2px); }
+    60% { transform: translate(-2px, 2px); }
+    80% { transform: translate(-2px, -2px); }
+    100% { transform: translate(0); }
+}
+
+@keyframes glitchBlue {
+    0% { transform: translate(0); }
+    20% { transform: translate(-2px, -2px); }
+    40% { transform: translate(-2px, 2px); }
+    60% { transform: translate(2px, -2px); }
+    80% { transform: translate(2px, 2px); }
+    100% { transform: translate(0); }
+}
+
+/* ================= TYPING ANIMATION ================= */
+.typewriter-text {
+    overflow: hidden;
+    border-right: 3px solid var(--accent);
+    white-space: nowrap;
+    margin: 0 auto;
+    letter-spacing: 0.1em;
+    animation: 
+        typing 3.5s steps(var(--characters, 40), end),
+        blink-caret 0.75s step-end infinite;
+}
+
+@keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
+}
+
+@keyframes blink-caret {
+    from, to { border-color: transparent; }
+    50% { border-color: var(--accent); }
+}
+
+/* ================= CODE SYNTAX HIGHLIGHTING EFFECT ================= */
+.code-block {
+    background: #1e1e1e;
+    color: #d4d4d4;
+    padding: 20px;
+    border-radius: 8px;
+    font-family: 'Fira Code', 'Courier New', monospace;
+    line-height: 1.6;
+    position: relative;
+    overflow: hidden;
+}
+
+.code-block::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(100, 181, 246, 0.1), transparent);
+    transform: translateX(-100%);
+    animation: codeScan 3s ease-in-out infinite;
+}
+
+.keyword { color: #569bd4; }
+.string { color: #ce9178; }
+.comment { color: #6a9955; font-style: italic; }
+.function { color: #dcdcaa; }
+.number { color: #b5cea8; }
+.variable { color: #9cdcfe; }
+
+@keyframes codeScan {
+    0% { transform: translateX(-100%); }
+    50% { transform: translateX(100%); }
+    100% { transform: translateX(100%); }
+}
+
+/* ================= CIRCUIT BOARD BACKGROUND ================= */
+.circuit-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.03;
+    background-image: 
+        linear-gradient(90deg, var(--primary) 1px, transparent 1px),
+        linear-gradient(var(--primary) 1px, transparent 1px);
+    background-size: 20px 20px;
+    animation: circuitMove 20s linear infinite;
+}
+
+.circuit-bg::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(circle at 20px 20px, var(--accent) 2px, transparent 2px),
+        radial-gradient(circle at 60px 60px, var(--primary) 1px, transparent 1px);
+    background-size: 80px 80px, 40px 40px;
+    animation: circuitPulse 4s ease-in-out infinite;
+}
+
+@keyframes circuitMove {
+    0% { background-position: 0 0; }
+    100% { background-position: 20px 20px; }
+}
+
+@keyframes circuitPulse {
+    0%, 100% { opacity: 0.03; }
+    50% { opacity: 0.08; }
+}
+
+/* ================= FLOATING BRACKETS ANIMATION ================= */
+.code-symbols {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.floating-symbol {
+    position: absolute;
+    font-family: 'Fira Code', monospace;
+    font-size: 24px;
+    color: var(--accent);
+    opacity: 0.1;
+    animation: floatSymbol 15s linear infinite;
+}
+
+@keyframes floatSymbol {
+    0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.1;
+    }
+    90% {
+        opacity: 0.1;
+    }
+    100% {
+        transform: translateY(-100px) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* ================= NEON GLOW EFFECTS ================= */
+.neon-text {
+    color: var(--accent);
+    text-shadow: 
+        0 0 5px var(--accent),
+        0 0 10px var(--accent),
+        0 0 15px var(--accent),
+        0 0 20px var(--accent);
+    animation: neonPulse 2s ease-in-out infinite alternate;
+}
+
+@keyframes neonPulse {
+    from {
+        text-shadow: 
+            0 0 5px var(--accent),
+            0 0 10px var(--accent),
+            0 0 15px var(--accent),
+            0 0 20px var(--accent);
+    }
+    to {
+        text-shadow: 
+            0 0 2px var(--accent),
+            0 0 5px var(--accent),
+            0 0 8px var(--accent),
+            0 0 12px var(--accent),
+            0 0 15px var(--accent);
+    }
+}
+
+/* ================= LOADING BAR ANIMATION ================= */
+.loading-bar {
+    width: 100%;
+    height: 4px;
+    background: #333;
+    border-radius: 2px;
+    overflow: hidden;
+    position: relative;
+}
+
+.loading-progress {
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent), var(--primary));
+    border-radius: 2px;
+    animation: loadingProgress 3s ease-in-out infinite;
+    position: relative;
+}
+
+.loading-progress::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+    animation: loadingShine 1.5s ease-in-out infinite;
+}
+
+@keyframes loadingProgress {
+    0% { width: 0%; }
+    50% { width: 75%; }
+    100% { width: 100%; }
+}
+
+@keyframes loadingShine {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+/* ================= HOVER EFFECTS FOR PROGRAMMING ELEMENTS ================= */
+.code-hover:hover {
+    background: #2d2d2d;
+    color: var(--accent);
+    transform: scale(1.02);
+    box-shadow: 0 0 20px rgba(100, 181, 246, 0.3);
+    transition: all 0.3s ease;
+}
+
+.tech-icon {
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.tech-icon:hover {
+    transform: rotateY(360deg) scale(1.1);
+    color: var(--accent);
+    text-shadow: 0 0 10px var(--accent);
+}
+
+/* ================= RESPONSIVE ADJUSTMENTS ================= */
+@media (max-width: 768px) {
+    .matrix-column {
+        font-size: 12px;
+    }
+    
+    .binary-stream {
+        font-size: 10px;
+    }
+    
+    .floating-symbol {
+        font-size: 18px;
+    }
+    
+    .terminal-body {
+        padding: 15px;
+        font-size: 14px;
+    }
+}
+
+body:not(.dark-theme) .matrix-column {
+    color: #00ff41;
+    text-shadow: 0 0 8px #00ff41, 0 0 15px #00ff41;
+    opacity: 0.7;
+    font-weight: bold;
+}
+@media (prefers-reduced-motion: reduce) {
+    .matrix-column,
+    .binary-stream,
+    .floating-symbol,
+    .neon-text {
+        animation: none;
+    }
+    
+    .glitch-text::before,
+    .glitch-text::after {
+        display: none;
+    }
 }
