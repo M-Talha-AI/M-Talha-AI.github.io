@@ -1235,6 +1235,23 @@ body.dark-theme .matrix-column {
     font-weight: bold;
 }
 
+body:not(.dark-theme) .projects-section .section-title h2 {
+    color: var(--secondary) !important;
+}
+
+body:not(.dark-theme) .projects-section .section-title p {
+    color: var(--gray) !important;
+}
+
+/* Ensure dark theme override works correctly */
+body.dark-theme .projects-section .section-title h2 {
+    color: #f8f9fa !important;
+}
+
+body.dark-theme .projects-section .section-title p {
+    color: #bbb !important;
+}
+
 body.dark-theme .about-text h3,
 body.dark-theme .timeline-content h3,
 body.dark-theme .section-title h2 {
@@ -1542,15 +1559,6 @@ body.dark-theme .contact-form h3::after {
     
     .projects-grid {
         grid-template-columns: 1fr;
-    }
-    
-    .projects-filter {
-        gap: 0.5rem;
-    }
-    
-    .filter-btn {
-        padding: 0.5rem 1rem;
-        font-size: 0.9rem;
     }
     
     .about-img {
@@ -2201,4 +2209,77 @@ body:not(.dark-theme) .matrix-column {
     .glitch-text::after {
         display: none;
     }
+}
+/* ================= FIX PROJECT FILTER BUTTONS ================= */
+
+/* Override the existing .project-card rule */
+.project-card {
+    display: none;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s ease;
+}
+
+.project-card.visible {
+    display: flex !important;
+    opacity: 1;
+    transform: translateY(0);
+    animation: fadeInUp 0.6s ease forwards;
+}
+
+/* Dark theme filter buttons fix */
+body.dark-theme .filter-btn {
+    border-color: #64B5F6;
+    color: #64B5F6;
+}
+
+body.dark-theme .filter-btn::before {
+    background: #64B5F6;
+}
+
+body.dark-theme .filter-btn:hover,
+body.dark-theme .filter-btn.active {
+    color: #121212;
+    box-shadow: 0 5px 15px rgba(100, 181, 246, 0.3);
+}
+
+/* Ensure proper button styling */
+.filter-btn {
+    padding: 0.6rem 1.5rem;
+    background-color: transparent;
+    border: 2px solid var(--primary);
+    color: var(--primary);
+    border-radius: 50px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    user-select: none;
+    font-family: inherit;
+    font-size: 1rem;
+}
+
+.filter-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: var(--primary);
+    transition: all 0.3s ease;
+    z-index: -1;
+}
+
+.filter-btn:hover::before,
+.filter-btn.active::before {
+    left: 0;
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 80, 162, 0.2);
 }

@@ -116,72 +116,6 @@ function initializeBasicFunctionality() {
         }, 800);
     });
     
-    // ======= PROJECT FILTERING AND LOAD MORE FUNCTIONALITY =======
-    const projectsPerPage = 6;
-    let currentFilter = 'all';
-    let visibleProjects = projectsPerPage;
-    
-    // Initialize project display
-    function initializeProjects() {
-        $('.project-card').removeClass('visible');
-        const $filteredProjects = currentFilter === 'all' 
-            ? $('.project-card') 
-            : $('.project-card[data-category*="' + currentFilter + '"]');
-        $filteredProjects.slice(0, projectsPerPage).addClass('visible');
-        toggleLoadMoreButton($filteredProjects.length);
-    }
-    
-    function toggleLoadMoreButton(totalProjects) {
-        if (visibleProjects < totalProjects) {
-            $('.load-more-container').show();
-        } else {
-            $('.load-more-container').hide();
-        }
-    }
-    
-    // Load more projects
-    $('#load-more').click(function() {
-        $(this).addClass('loading');
-        
-        setTimeout(() => {
-            const $filteredProjects = currentFilter === 'all' 
-                ? $('.project-card') 
-                : $('.project-card[data-category*="' + currentFilter + '"]');
-            
-            $filteredProjects.slice(visibleProjects, visibleProjects + projectsPerPage).addClass('visible');
-            visibleProjects += projectsPerPage;
-            toggleLoadMoreButton($filteredProjects.length);
-            $(this).removeClass('loading');
-        }, 500);
-    });
-    
-    // Project filtering
-    $('.filter-btn').click(function() {
-        $('.filter-btn').removeClass('active');
-        $(this).addClass('active');
-        currentFilter = $(this).data('filter');
-        visibleProjects = projectsPerPage;
-        
-        $('.project-card').removeClass('visible');
-        
-        if (currentFilter === 'all') {
-            $('.project-card').slice(0, projectsPerPage).addClass('visible');
-            toggleLoadMoreButton($('.project-card').length);
-        } else {
-            const $filteredProjects = $('.project-card[data-category*="' + currentFilter + '"]');
-            $filteredProjects.slice(0, projectsPerPage).addClass('visible');
-            toggleLoadMoreButton($filteredProjects.length);
-        }
-        
-        if ($(window).scrollTop() > $('#projects').offset().top + 300) {
-            $('html, body').animate({
-                scrollTop: $('#projects').offset().top - 100
-            }, 500);
-        }
-    });
-    
-    initializeProjects();
-    
     // Form submission with validation and email redirection
     $('#contact-form').submit(function(e) {
         let valid = true;
@@ -283,6 +217,75 @@ function initializeBasicFunctionality() {
     // Create modal for each project if not already in HTML
     createProjectModals();
 }
+
+// ======= PROJECT FILTERING AND LOAD MORE FUNCTIONALITY - MOVED OUTSIDE FUNCTION =======
+const projectsPerPage = 6;
+let currentFilter = 'all';
+let visibleProjects = projectsPerPage;
+
+// Initialize project display
+function initializeProjects() {
+    $('.project-card').removeClass('visible');
+    const $filteredProjects = currentFilter === 'all' 
+        ? $('.project-card') 
+        : $('.project-card[data-category*="' + currentFilter + '"]');
+    $filteredProjects.slice(0, projectsPerPage).addClass('visible');
+    toggleLoadMoreButton($filteredProjects.length);
+}
+
+function toggleLoadMoreButton(totalProjects) {
+    if (visibleProjects < totalProjects) {
+        $('.load-more-container').show();
+    } else {
+        $('.load-more-container').hide();
+    }
+}
+
+// Load more projects
+$('#load-more').click(function() {
+    $(this).addClass('loading');
+    
+    setTimeout(() => {
+        const $filteredProjects = currentFilter === 'all' 
+            ? $('.project-card') 
+            : $('.project-card[data-category*="' + currentFilter + '"]');
+        
+        $filteredProjects.slice(visibleProjects, visibleProjects + projectsPerPage).addClass('visible');
+        visibleProjects += projectsPerPage;
+        toggleLoadMoreButton($filteredProjects.length);
+        $(this).removeClass('loading');
+    }, 500);
+});
+
+// Project filtering - FIXED BUTTON LOGIC
+$('.filter-btn').click(function() {
+    $('.filter-btn').removeClass('active');
+    $(this).addClass('active');
+    currentFilter = $(this).data('filter');
+    visibleProjects = projectsPerPage;
+    
+    $('.project-card').removeClass('visible');
+    
+    if (currentFilter === 'all') {
+        $('.project-card').slice(0, projectsPerPage).addClass('visible');
+        toggleLoadMoreButton($('.project-card').length);
+    } else {
+        const $filteredProjects = $('.project-card[data-category*="' + currentFilter + '"]');
+        $filteredProjects.slice(0, projectsPerPage).addClass('visible');
+        toggleLoadMoreButton($filteredProjects.length);
+    }
+    
+    if ($(window).scrollTop() > $('#projects').offset().top + 300) {
+        $('html, body').animate({
+            scrollTop: $('#projects').offset().top - 100
+        }, 500);
+    }
+});
+
+// Initialize projects
+$(document).ready(function() {
+    initializeProjects();
+});
 
 // ================= PROGRAMMING ANIMATIONS =================
 function initializeProgrammingAnimations() {
@@ -1588,33 +1591,6 @@ function addDynamicStyles() {
                 }
 
                 .about-img {
-                    flex: 1;
-                    position: relative;
-                    max-width: 400px;
-                    margin: 0;
-                    align-self: flex-start;
-                    margin-top: 0;
-                }
-
-                .about-text {
-                    flex: 1;
-                    padding-top: 0;
-                }
-
-                .about-text h3 {
-                    margin-top: 0;
-                    line-height: 1.2;
-                }
-
-                /* Responsive alignment fixes */
-                @media (max-width: 992px) {
-                    .about-content {
-                        flex-direction: column;
-                        align-items: center;
-                        gap: 3rem;
-                    }
-                    
-                    .about-img {
                         max-width: 350px;
                         margin: 0 auto;
                     }
