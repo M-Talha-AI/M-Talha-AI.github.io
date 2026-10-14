@@ -113,6 +113,8 @@
                             <li>Single-handedly designed and built <strong>Parsey</strong>, a production multi-tenant, multilingual (EN/AR/FR) agentic AI concierge: a code-execution ("code-mode") agent where the LLM writes Python run in a hardened AST-allowlist sandbox</li>
                             <li>Engineered hybrid RAG on native Postgres/pgvector (dense + FTS + trigram, RRF) with HyPE embeddings, a multi-provider LLM router with failover, and JIT prompting that cut input tokens ~38%</li>
                             <li>Deployed the full platform on AWS with Terraform IaC (ECS Fargate, RDS, ElastiCache, ALB, ECR) via Bitbucket CI/CD, with automated DB-per-tenant provisioning</li>
+                            <li>Led development of a <strong>real-time voice AI agent</strong> that answers hotel and restaurant phone lines in <strong>14 languages</strong>, taking reservations through live tool calls over Telnyx SIP + LiveKit, with per-language TTS routing that switches voice mid-call</li>
+                            <li>Designed it to <strong>scale through config, not code</strong>: each venue is its own tenant DB choosing its pipeline (STT-LLM-TTS or Realtime speech-to-speech), providers and languages; changes validated with <strong>automated call simulations</strong> (Bluejay) and monitored through per-turn call traces</li>
                         </ul>
                     </div>
                 </div>
@@ -162,7 +164,40 @@
                 </div>
                 <div class="timeline-item fade-in">
                     <div class="timeline-content">
-                        <span class="date">2020 - 2024</span>
+                        <span class="date">Feb 2021 - Nov 2021</span>
+                        <h3>Data Scientist Nanodegree</h3>
+                        <h4><a href="https://www.udacity.com/course/data-scientist-nanodegree--nd025" target="_blank" rel="noopener noreferrer">Udacity</a></h4>
+                        <ul>
+                            <li>Coursework: Data Science Process, Software Engineering (OOP, unit testing, Python packaging), Data Engineering (ETL and NLP pipelines), Experiment Design and A/B Testing, Recommendation Systems (collaborative filtering, matrix factorization)</li>
+                            <li>Projects: Disaster Response pipeline (ETL + NLP classifier for emergency messages, Figure Eight data), IBM Watson Studio recommendation engine</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item fade-in">
+                    <div class="timeline-content">
+                        <span class="date">July 2020 - Sep 2021</span>
+                        <h3>ML Engineer</h3>
+                        <h4><a href="https://nstp.pk/" target="_blank" rel="noopener noreferrer">NSTP</a><a href="https://nust.edu.pk/" target="_blank" rel="noopener noreferrer">, NUST</a></h4>
+                        <ul>
+                            <li>Developed <strong>voice anti-spoofing</strong> models (MFCC/CQCC/LFCC features + CNN classifiers) that protect voice-authenticated systems from <strong>deepfake and replay attacks</strong></li>
+                            <li>Combined them with <strong>speaker verification</strong> and tuned decision thresholds and reject rules as guardrails, balancing false accepts against false rejects</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item fade-in">
+                    <div class="timeline-content">
+                        <span class="date">March 2020 - Sep 2020</span>
+                        <h3>ML Intern</h3>
+                        <h4><a href="https://nstp.pk/" target="_blank" rel="noopener noreferrer">NSTP</a><a href="https://nust.edu.pk/" target="_blank" rel="noopener noreferrer">, NUST</a></h4>
+                        <ul>
+                            <li>Fine-tuned pretrained speech models into a real-time <strong>scam call detection</strong> pipeline, pairing an audio classifier with speech-to-text + NLP to flag fraud while the call is live</li>
+                            <li>Built a labelled <strong>synthetic voice dataset</strong> with TTS, voice cloning and phone-channel augmentation (noise, codecs, 8 kHz), giving the models realistic call audio to train on</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item fade-in">
+                    <div class="timeline-content">
+                        <span class="date">2019 - 2023</span>
                         <h3>Bachelor of Science in Artificial Intelligence</h3>
                         <h4><a href="https://www.au.edu.pk/" target="_blank" rel="noopener noreferrer">Air University</a>, Islamabad, Pakistan</h4>
                         <ul>
@@ -198,14 +233,15 @@
                     </div>
                 </div>
                 <div class="project-content">
-                    <h3>Parsey AI — Multi-Tenant Hospitality Agent</h3>
-                    <p>A production multi-tenant, multilingual (EN/AR/FR) agentic AI concierge for hotels, built end-to-end and single-handedly. A novel "code-mode" agent (LLM writes Python in a hardened sandbox), hybrid RAG on Postgres/pgvector, deployed on AWS with Terraform.</p>
+                    <h3>Parsey AI — Multi-Tenant Hospitality Agent (Chat + Voice)</h3>
+                    <p>A production multi-tenant, multilingual agentic AI concierge for hotels, on chat and phone. Chat, built single-handedly: a novel "code-mode" agent (LLM writes Python in a hardened sandbox) and hybrid RAG on Postgres/pgvector. Voice: a real-time phone agent in 14 languages over Telnyx SIP + LiveKit. Deployed on AWS with Terraform.</p>
                     <div class="project-tags">
                         <span class="project-tag">Agentic AI</span>
                         <span class="project-tag">Hybrid RAG</span>
                         <span class="project-tag">pgvector</span>
                         <span class="project-tag">AWS</span>
                         <span class="project-tag">Terraform</span>
+                        <span class="project-tag">Voice AI</span>
                     </div>
                     <div class="project-links">
                         <a href="#" class="btn project-btn" data-modal="parsey-ai">View Details</a>
@@ -530,11 +566,11 @@
             <div class="modal-close" data-modal="parsey-ai-modal">
                 <i class="fas fa-times"></i>
             </div>
-            <h2>Parsey AI — Multi-Tenant Hospitality Agent</h2>
+            <h2>Parsey AI — Multi-Tenant Hospitality Agent (Chat + Voice)</h2>
             <p><strong>Timeline:</strong> September 2025 - Present</p>
-            <p><strong>Role:</strong> Solution Architect – AI @ Parse AI (sole developer)</p>
+            <p><strong>Role:</strong> Solution Architect – AI @ Parse AI (sole developer of Parsey chat; led the voice agent)</p>
             <p><strong>Description:</strong></p>
-            <p>Parsey is a production, multi-tenant, multilingual (EN/AR/FR) agentic AI concierge for the hospitality industry, designed and built entirely single-handedly, from the reasoning engine through to the AWS infrastructure it runs on. It handles guest requests (room service, spa, housekeeping, maintenance, concierge) across web chat, WhatsApp, and Telegram.</p>
+            <p>Parsey is a production, multi-tenant, multilingual (EN/AR/FR) agentic AI concierge for the hospitality industry, designed and built entirely single-handedly, from the reasoning engine through to the AWS infrastructure it runs on. It handles guest requests (room service, spa, housekeeping, maintenance, concierge) across web chat, WhatsApp, and Telegram. A real-time voice agent extends it to hotel and restaurant phone lines in 14 languages.</p>
             <p><strong>Key Features:</strong></p>
             <ul>
                 <li>A novel code-execution ("code-mode") agent: the LLM writes short Python programs executed inside a hardened AST-allowlist sandbox, replacing conventional JSON tool-calling</li>
@@ -543,9 +579,11 @@
                 <li>Production evaluation stack: a 191-conversation golden dataset, LLM-as-judge, and Ragas-style retrieval metrics</li>
                 <li>Multi-channel delivery on one FastAPI backend (Twilio WhatsApp, Telegram, SSE-streaming web chat) with React 19 + TypeScript front ends</li>
                 <li>DB-per-tenant isolation with automated provisioning and encrypted per-tenant secrets (Fernet + key rotation)</li>
+                <li>Real-time voice agent over Telnyx SIP + LiveKit, taking reservations through live tool calls, with per-language TTS routing that switches voice mid-call</li>
+                <li>Scales through config, not code: each venue is its own tenant DB choosing its pipeline (STT-LLM-TTS or Realtime speech-to-speech), providers and languages; validated with automated call simulations (Bluejay) and monitored through per-turn call traces</li>
             </ul>
             <p><strong>Technologies Used:</strong></p>
-            <p>Python, FastAPI, PostgreSQL, pgvector, LiteLLM, OpenAI, Cerebras, Helicone, LlamaParse, React, TypeScript, Vite, AWS (ECS Fargate, RDS, ElastiCache, ALB, ECR, VPC), Terraform, Docker, Bitbucket CI/CD</p>
+            <p>Python, FastAPI, PostgreSQL, pgvector, LiteLLM, OpenAI, Cerebras, Helicone, LlamaParse, React, TypeScript, Vite, AWS (ECS Fargate, RDS, ElastiCache, ALB, ECR, VPC), Terraform, Docker, Bitbucket CI/CD, Telnyx, LiveKit, Soniox, Deepgram, Cartesia, ElevenLabs, OpenAI Realtime</p>
             <p><strong>Outcome:</strong></p>
             <p>Delivered a scalable, isolated multi-tenant platform live on AWS, onboarding hotels through an automated database-per-tenant provisioning flow with per-tenant DNS and load-balancing.</p>
         </div>
@@ -557,7 +595,7 @@
                 <i class="fas fa-times"></i>
             </div>
             <h2>Wealth Genie — Financial Advisory System</h2>
-            <p><strong>Timeline:</strong> January 2025 - Present</p>
+            <p><strong>Timeline:</strong> January 2025 - September 2025</p>
             <p><strong>Client:</strong> WealthNX</p>
             <p><strong>Description:</strong></p>
             <p>Wealth Genie is a sophisticated financial advisory system designed to provide personalized financial guidance to users of the WealthNX mobile platform. The system combines the power of Knowledge Graphs with Retrieval-Augmented Generation to deliver accurate, contextually relevant financial advice.</p>
@@ -582,7 +620,7 @@
                 <i class="fas fa-times"></i>
             </div>
             <h2>Zero Violation — Traffic Monitoring System</h2>
-            <p><strong>Timeline:</strong> 2023 - 2024 (Final Year Project)</p>
+            <p><strong>Timeline:</strong> 2022 - 2023 (Final Year Project)</p>
             <p><strong>Client:</strong> Self-initiated project</p>
             <p><strong>Description:</strong></p>
             <p>Zero Violation is a real-time traffic monitoring system implemented on Jetson Nano that can detect and record traffic violations automatically. The system uses computer vision techniques to identify vehicles, track their movements, and detect violations such as Helmet, Seatbelt, Wrong Number-Plate, and improper lane changes.</p>
