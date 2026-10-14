@@ -303,7 +303,7 @@ $(document).ready(function() {
             {
                 id: 'inexor-llm',
                 title: 'INEXOR-LLM — Financial Domain Model',
-                timeline: 'January 2025 - Present',
+                timeline: 'January 2025 - September 2025',
                 client: 'INEXOR AI',
                 description: 'A proprietary Large Language Model developed from scratch specifically for finance applications. This specialized LLM leverages cutting-edge techniques like Rotary Position Embedding (RoPE), multi-latent attention mechanisms, and Mixture of Experts (MoE) architecture to deliver precise and contextually relevant financial analysis and insights.',
                 features: [
